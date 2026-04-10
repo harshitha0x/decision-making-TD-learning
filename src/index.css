@@ -1,0 +1,21 @@
+@import "tailwindcss";
+
+@theme {
+  --color-midnight: #030712;    /* Deepest Navy */
+  --color-purple-core: #581c87;  /* Deep Purple Nodes */
+  --color-electric: #a855f7;     /* Bright Purple Links */
+  --color-neon-violet: #d8b4fe;  /* Active Signal Pulse */
+  --color-cream: #f8fafc;        /* High-Visibility Text */
+}
+
+body {
+  background-color: var(--color-midnight);
+  color: var(--color-cream);
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.glass-panel {
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(168, 85, 247, 0.15);
+}
