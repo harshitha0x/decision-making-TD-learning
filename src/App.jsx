@@ -405,7 +405,7 @@ export default function App() {
             <div className="flex justify-center gap-12 w-full mb-10">
               <div className="flex flex-col items-center gap-3">
                 <div className="w-24 h-24 rounded-full overflow-hidden border-2 border-amber-400/30 shadow-[0_0_15px_rgba(251,191,36,0.2)]">
-                  <img src="/harshitha.jpg" alt="Harshitha" className="w-full h-full object-cover" />
+                  <img src="/harshitha sajith.jpeg" alt="Harshitha" className="w-full h-full object-cover" />
                 </div>
                 <div className="text-center">
                   <p className="text-white font-bold tracking-widest text-[15px] uppercase leading-tight">
