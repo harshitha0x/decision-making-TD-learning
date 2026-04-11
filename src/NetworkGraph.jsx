@@ -121,7 +121,7 @@ export default function NetworkGraph({
         .attr('text-anchor', 'middle')
         .attr('fill', 'white').attr('font-size', '15px').attr('font-weight', '900').attr('font-family', 'monospace')
         //.style('filter', 'url(#glow)')
-        .text('0.0');
+        .text('0.00');
 
       // Jam tag
       g.append('text')
@@ -143,7 +143,7 @@ export default function NetworkGraph({
     const svg = d3.select(svgRef.current);
     nodes.forEach(node => {
       const v = values[node.id];
-      if (v !== undefined) svg.select(`.vt-${node.id}`).text(v.toFixed(1));
+      if (v !== undefined) svg.select(`.vt-${node.id}`).text(v.toFixed(2));
 
       const jammed = !!congestion[node.id];
       const isDest = node.type === 'dest', isSrc = node.type === 'source';
@@ -225,7 +225,7 @@ export default function NetworkGraph({
 
   return (
     <div className="flex flex-col h-full w-full p-3 gap-2">
-      <div className="flex flex-wrap gap-x-4 gap-y-1 text-[9px] font-mono text-white/30 px-1">
+      <div className="flex flex-wrap gap-x-4 gap-y-1 text-[14px] font-mono text-white/30 px-1">
         <span>SRC: <span className="text-cyan-400/80">{(values.Source ?? 0).toFixed(3)}</span></span>
         {routers.map(r => (
           <span key={r.id}>
@@ -251,10 +251,10 @@ export default function NetworkGraph({
       <button
         onClick={runSim}
         disabled={busy}
-        className={`w-full py-4 font-black rounded-2xl border transition-all text-[11px] uppercase tracking-[0.4em] ${
+        className={`w-full py-4 font-black rounded-2xl border transition-all text-[14px] uppercase tracking-[0.4em] ${
           busy
             ? 'bg-white/3 border-white/5 text-white/20 cursor-not-allowed'
-            : 'bg-purple-950/60 border-purple-500/40 hover:bg-purple-700/70 hover:border-purple-400 text-white shadow-lg shadow-purple-900/30 active:scale-[0.98]'
+            : 'bg-purple-950/60 border-purple-500/40 hover:bg-purple-700/70 hover:border-purple-400 text-white shadow-lg shadow-purple-900/15 active:scale-[0.98]'
         }`}
       >
         {busy ? '…' : '  Send Packet'}

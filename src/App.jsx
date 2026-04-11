@@ -53,6 +53,36 @@ export default function App() {
     setStepData(null);
   };
 
+  const handleDownload = () => {
+  let content = `DECISION MAKING : TD LEARNING SIMULATION REPORT\n\n`;
+  content += `Date: ${new Date().toLocaleString()}\n\n`;
+  
+  content += `Input given : \n`;
+  content += `Alpha (Learning Rate): ${alpha}\n`;
+  content += `Gamma (Discount Factor): ${gamma}\n`;
+  content += `Router Count: ${numRouters}\n`;
+  content += `Packet Size: ${packetSize}B\n`;
+  content += `Normal Reward: ${reward}\n`;
+  content += `Congestion Penalty: ${congestionCost}\n\n`;
+
+  content += `Simulation results : \n`;
+  content += `Step  | Value V(s) | TD Error\n`;
+  content += `------------------------------\n`;
+  
+  history.forEach((entry) => {
+    content += `${entry.step.toString().padEnd(5)} | ${entry.value.toString().padEnd(10)} | ${entry.tdError}\n`;
+  });
+
+  const blob = new Blob([content], { type: 'text/plain' });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = `TD_Routing_Report.txt`;
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+  URL.revokeObjectURL(url);
+};
   const logColor = (level) => ({
     sys: "text-cyan-400", net: "text-green-400",
     update: "text-purple-300", warn: "text-yellow-400",
@@ -65,17 +95,26 @@ export default function App() {
       <nav className="border-b border-white/5 bg-[#030712]/90 backdrop-blur px-15 py-3 flex items-center justify-between">
         <div className="flex items-center gap-6">
           <div>
-            <h1 className="text-base font-black italic text-white tracking-tight leading-none">
+            <h1 className="text-2xl font-black italic text-white tracking-tight leading-none">
               <span className="text-WHITE-400">DECISION MAKING</span> : TD<span className="text-WHITE-400"> LEARNING</span>
             </h1>
           </div>
-          <div className="flex gap-1.5">
+          <div className="flex gap-3">
             {Object.keys(MODALS).map(btn => (
-              <button key={btn} onClick={() => setActiveTab(btn)}
-                className="px-3 py-1.5 text-[9px] font-bold uppercase tracking-widest border border-white/8 bg-white/3 hover:bg-cyan-500/20 hover:border-cyan-500/40 hover:text-cyan-300 transition-all rounded-sm">
-                {btn}
-              </button>
-            ))}
+  <button 
+    key={btn} 
+    onClick={() => {
+      if (btn === 'download') {
+        handleDownload(); 
+      } else {
+        setActiveTab(btn);
+      }
+    }}
+    className="px-5 py-2.5 text-[12px] font-black uppercase tracking-widest border border-white/10 bg-white/5 hover:bg-purple-500/30 hover:border-purple-500 hover:text-purple transition-all rounded-md shadow-lg shadow-purple-900/15"
+  >
+    {btn}
+  </button>
+))}
           </div>
         </div>
       </nav>
@@ -83,7 +122,7 @@ export default function App() {
         <div className="col-span-3 flex flex-col gap-3 overflow-y-auto">
           <Panel title="Topology" accent="cyan">
                     <div className="mb-1 flex justify-between text-[9px] text-white/40 uppercase tracking-widest">
-           <span>Router Count</span><span className="text-amber-300 font-bold">{numRouters}</span>
+           <span>Router Count</span><span className="text-white-700 font-bold">{numRouters}</span>
             </div>
             <div className="flex gap-1.5 flex-wrap">
               {[1, 2, 3, 4, 5, 6].map(n => (
@@ -91,7 +130,7 @@ export default function App() {
                   className={`w-9 h-9 rounded border text-[11px] font-black transition-all ${
                     numRouters === n
                       ? 'bg-purple-500/30 border-cyan-400/60 text-cyan-200'
-                      : 'bg-white/3 border-white/8 text-white/30 hover:border-amber-400/30 hover:text-amber-400/60'
+                      : 'bg-white/3 border-white/8 text-white/30 hover:border-cyan-400/30 hover:text-cyan-400/60'
                   }`}>
                   {n}
                 </button>
@@ -141,7 +180,7 @@ export default function App() {
           </Panel>
 
           <button onClick={resetSim}
-            className="w-full py-2 border border-red-500/20 bg-purple-700/10 hover:bg-red-900/30 text-red-400 text-[9px] font-bold uppercase tracking-widest rounded transition-all">
+            className="w-full py-2 border border-red-500/20 bg-purple-700/10 hover:bg-red-900/30 text-red-400 text-[11px] font-bold uppercase tracking-widest rounded transition-all">
             Reset Simulation
           </button>
         </div>
@@ -231,7 +270,7 @@ export default function App() {
 
       {/* MODALS */}
       {activeTab === 'learn' && (
-        <Modal onClose={() => setActiveTab(null)} title="TD Learning — Concept Explained" accent="cyan">
+        <Modal onClose={() => setActiveTab(null)} title="TD Learning Explanation" accent="cyan">
           <div className="grid grid-cols-2 gap-8 text-[11px] leading-relaxed text-slate-400">
             <div className="space-y-4">
               <section>
@@ -279,9 +318,16 @@ export default function App() {
                   ))}
                 </div>
               </section>
-              <div className="aspect-video rounded-lg overflow-hidden border border-white/10">
-                <iframe width="100%" height="100%" src="https://www.youtube.com/embed/0r3Q6yH1MvQ"
-                  frameBorder="0" allowFullScreen title="TD Learning" />
+              <div className="aspect-video rounded-lg overflow-hidden border border-white/10 shadow-2xl bg-black">
+                <iframe 
+                  width="100%" 
+                  height="100%" 
+                  src="https://www.youtube.com/embed/Udzp_KDLYUo" 
+                  title="IIT Madras TD Learning Lecture"
+                  frameBorder="0" 
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                  allowFullScreen
+                ></iframe>
               </div>
             </div>
           </div>
@@ -370,7 +416,7 @@ export default function App() {
               </div>
               <div className="flex flex-col items-center gap-3">
                 <div className="w-24 h-24 rounded-full overflow-hidden border-2 border-amber-400/30 shadow-[0_0_15px_rgba(251,191,36,0.2)]">
-                  <img src="/priyadharshini.jpg" alt="Priyadharshini" className="w-full h-full object-cover" />
+                  <img src="/priyadharshini s.jpeg" alt="Priyadharshini" className="w-full h-full object-cover" />
                 </div>
                 <div className="text-center">
                   <p className="text-white font-bold tracking-widest text-[15px] uppercase leading-tight">
@@ -382,14 +428,20 @@ export default function App() {
 
             </div>
 
+            {/* FACULTY ADVISOR: Swaminathan A */}
             <div className="pt-6 border-t border-white/5 w-3/4 flex flex-col items-center">
               <p className="text-[12px] text-white/50 uppercase tracking-[0.4em] mb-4">Under the Guidance of</p>
-              <div className="w-20 h-20 rounded-full overflow-hidden border border-white/50 mb-3 grayscale hover:grayscale-0 transition-all">
-                <img src="/swaminathan.jpg" alt="Faculty" className="w-full h-full object-cover" />
+              
+              {/* Removed 'grayscale' and 'hover:grayscale-0' to keep color */}
+              <div className="w-30 h-30 rounded-full overflow-hidden border border-white/50 mb-3 transition-all shadow-lg shadow-amber-900/10">
+                <img src="/dr swaminathan a.png" alt="Faculty" className="w-full h-full object-cover" />
               </div>
+              
               <p className="text-white font-bold tracking-widest text-[15px] uppercase text-center">
                 SWAMINATHAN A<br />
               </p>
+              <p className="text-amber-400/60 font-mono text-[15px] mt-1">Faculty</p>
+              <p className="text-amber-400/60 font-mono text-[15px] mt-1">Computer Networks</p>
             </div>
 
           </div>
