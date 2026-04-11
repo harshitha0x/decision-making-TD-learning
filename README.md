@@ -19,4 +19,4 @@ An interactive visualization tool demonstrating how Reinforcement Learning (RL) 
 - **Build Tool:** Vite
 - **Mathematical Modeling:** Temporal Difference Learning (RL)
 
-Developed for the **Computer Networks** course by **Harshitha Sajith Menon** (Reg: 24BYB1166).
+
