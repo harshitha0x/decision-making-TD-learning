@@ -3,7 +3,7 @@
 
 ### Temporal Difference (TD) Learning Simulation
 
-An interactive visualization tool demonstrating how Reinforcement Learning (RL) can optimize packet routing in a dynamic Computer Network environment.
+An interactive visualization tool demonstrating how reinforcement learning (RL) can optimize packet routing in a dynamic network environment.
 
 ## Features
 
