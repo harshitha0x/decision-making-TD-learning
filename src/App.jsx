@@ -398,7 +398,7 @@ export default function App() {
             <div className="flex justify-center gap-12 w-full mb-10">
               <div className="flex flex-col items-center gap-3">
                 <div className="w-24 h-24 rounded-full overflow-hidden border-2 border-amber-400/30 shadow-[0_0_15px_rgba(251,191,36,0.2)]">
-                  <img src="/harshitha sajith.jpeg" alt="Harshitha" className="w-full h-full object-cover" />
+                  <img src="harshitha sajith.jpeg" alt="Harshitha" className="w-full h-full object-cover" />
                 </div>
                 <div className="text-center">
                   <p className="text-white font-bold tracking-widest text-[15px] uppercase leading-tight">
@@ -409,7 +409,7 @@ export default function App() {
               </div>
               <div className="flex flex-col items-center gap-3">
                 <div className="w-24 h-24 rounded-full overflow-hidden border-2 border-amber-400/30 shadow-[0_0_15px_rgba(251,191,36,0.2)]">
-                  <img src="/priyadharshini s.jpeg" alt="Priyadharshini" className="w-full h-full object-cover" />
+                  <img src="priyadharshini s.jpeg" alt="Priyadharshini" className="w-full h-full object-cover" />
                 </div>
                 <div className="text-center">
                   <p className="text-white font-bold tracking-widest text-[15px] uppercase leading-tight">
@@ -425,7 +425,7 @@ export default function App() {
               <p className="text-[12px] text-white/50 uppercase tracking-[0.4em] mb-4">Under the Guidance of</p>
               
               <div className="w-30 h-30 rounded-full overflow-hidden border border-white/50 mb-3 transition-all shadow-lg shadow-amber-900/10">
-                <img src="/dr swaminathan a.png" alt="Faculty" className="w-full h-full object-cover" />
+                <img src="dr swaminathan a.png" alt="Faculty" className="w-full h-full object-cover" />
               </div>
               
               <p className="text-white font-bold tracking-widest text-[15px] uppercase text-center">
