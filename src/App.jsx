@@ -138,7 +138,6 @@ export default function App() {
             </div>
           </Panel>
 
-          {/* Learning params */}
           <Panel title="Settings" accent="cyan">
             <ParamRow label="Alpha α" value={alpha.toFixed(1)}>
               <input type="range" min="0.1" max="1" step="0.1" value={alpha}
@@ -157,7 +156,6 @@ export default function App() {
             </ParamRow>
           </Panel>
 
-          {/* Reward */}
           <Panel title="Reward Configurations" accent="cyan">
             <ParamRow label="Normal Reward" value={reward}>
               <input type="number" value={reward} onChange={e => setReward(parseFloat(e.target.value))}
@@ -169,7 +167,6 @@ export default function App() {
             </ParamRow>
           </Panel>
 
-          {/* Step mode */}
           <Panel title="Display Mode" accent="cyan">
             <label className="flex items-center gap-3 cursor-pointer" onClick={() => setStepMode(p => !p)}>
               <div className={`w-9 h-5 rounded-full relative transition-all ${stepMode ? 'bg-blue-500' : 'bg-white/10'}`}>
@@ -185,7 +182,6 @@ export default function App() {
           </button>
         </div>
 
-        {/* CENTER — bigger */}
         <div className="col-span-6 flex flex-col gap-3">
           <div className="flex-1 bg-[#010409] border border-white/5 rounded-xl overflow-hidden">
             <NetworkGraph
@@ -198,7 +194,6 @@ export default function App() {
             />
           </div>
 
-          {/* Step breakdown */}
           {stepMode && stepData && (
             <div className="bg-[#030c1b] border border-amber-500/20 rounded-lg p-4 text-[10px] shrink-0">
               <h4 className="text-cyan-400 font-bold uppercase tracking-widest mb-3 text-[9px]">TD Calculation Breakdown</h4>
@@ -216,7 +211,6 @@ export default function App() {
           )}
         </div>
 
-        {/* RIGHT PANEL */}
         <div className="col-span-3 flex flex-col gap-3 overflow-hidden">
           <Panel title="Log" accent="cyan" className="flex-1 overflow-hidden flex flex-col min-h-0">
             <div className="overflow-y-auto flex-1 space-y-0.5 text-[8.5px]">
@@ -268,7 +262,6 @@ export default function App() {
         </div>
       </main>
 
-      {/* MODALS */}
       {activeTab === 'learn' && (
         <Modal onClose={() => setActiveTab(null)} title="TD Learning Explanation" accent="cyan">
           <div className="grid grid-cols-2 gap-8 text-[11px] leading-relaxed text-slate-400">
@@ -428,11 +421,9 @@ export default function App() {
 
             </div>
 
-            {/* FACULTY ADVISOR: Swaminathan A */}
             <div className="pt-6 border-t border-white/5 w-3/4 flex flex-col items-center">
               <p className="text-[12px] text-white/50 uppercase tracking-[0.4em] mb-4">Under the Guidance of</p>
               
-              {/* Removed 'grayscale' and 'hover:grayscale-0' to keep color */}
               <div className="w-30 h-30 rounded-full overflow-hidden border border-white/50 mb-3 transition-all shadow-lg shadow-amber-900/10">
                 <img src="/dr swaminathan a.png" alt="Faculty" className="w-full h-full object-cover" />
               </div>
