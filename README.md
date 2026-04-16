@@ -1,7 +1,7 @@
 
-### Adaptive Network Routing
+## Adaptive Network Routing
 
-### Temporal Difference (TD) Learning Simulation
+## Temporal Difference (TD) Learning Simulation
 
 An interactive visualization tool demonstrating how reinforcement learning (RL) can optimize packet routing in a dynamic network environment.
 
@@ -18,6 +18,11 @@ An interactive visualization tool demonstrating how reinforcement learning (RL) 
 - **Frontend:** React.js, Tailwind CSS
 - **Visualization:** D3.js
 - **Build Tool:** Vite
-- **Mathematical Modeling:** Temporal Difference Learning (RL)
+
+## Team
+
+- **Harshitha Sajith Menon - 24BYB1166** 
+- **Priyadharshini S - 24BYB1068** 
+
 
 
